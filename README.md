@@ -30,10 +30,42 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h2>Deployment and Configuration Steps</h2>
 
 <p>
+<img src="https://i.imgur.com/bFa9zZ3.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+I. In order to get started, both a Domain Controller (DC) and a Client Virtual Machine need to be created and connected to the same Vnet. Set the DC's Network Interface Card (NIC) to Static (in Azure, go to the correct VM>Networking>IP Configuration>click IP>change Assignment to 'Static').
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/1RDm5IR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+II. Enable ICMPv4 on the Firewall. From the Search bar at the bottom of the DC, open 'mf.msc'>Inbound Rules>click to sort by 'Protocol'>find ICMPv4>enable both rules.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/UILe0ZS.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+III. Log into the DC and install Active Directory by clicking 'Add Roles and Features' from the Server Manager>click 'Next' until 'Active Directory Domain Services' is available, choose and install.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/XliuFwL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+IV. Promote server to an actual domain controller by clicking the flag in the right-hand corner and choosing 'Promote this server to a domain controller'.
+</p>
+<br />
+
+<p>
 <img src="https://i.imgur.com/rNObYhW.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-After having installed Active Directory and promoted the server to Domain Controller, the domain can be named.
+V. After having installed Active Directory and promoted the server to Domain Controller, the domain can be named by choosing 'Add a new forest'>name the domain>create a password>click 'Next' until able to install>system will restart>log back in as 'domainname\username' (ex: mydomain.com\celena).
 </p>
 <br />
 
@@ -41,7 +73,7 @@ After having installed Active Directory and promoted the server to Domain Contro
 <img src="https://i.imgur.com/mM5DHVm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-At this point, Organizational Units and Groups may be created in order to group Users into. Users themselves may be added as well.
+VI. From this point, Active Directory is able to be used to create Organizational Units, Groups, and so much more!
 </p>
 <br />
 
@@ -49,6 +81,6 @@ At this point, Organizational Units and Groups may be created in order to group 
 <img src="https://i.imgur.com/4fU7121.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-A script was run in Powershell ISE here in order to add a very large number of employees at once. Once those users were added, Active Directory can then be used for all types of functions, such as changing passwords, adding Users to Groups, Organizational Units, disabling Users, etc.
+VII. Here, a script was run in Powershell ISE in order to add thousands of employees at once. Once Users added, Active Directory can then be used for all types of functions such as changing passwords, adding Users to Groups, Organizational Units, disabling Users, etc. Active Directory is your oyster!
 </p>
 <br />
